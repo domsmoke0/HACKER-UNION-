@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HACKERS UNION SENSITIVITY AI V6</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at center, #0a001f 0%, #000000 70%);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+    
+    .neon-green {
+      text-shadow: 0 0 15px #00ff80, 0 0 30px #00ff80;
+    }
+    
+    .glass {
+      background: rgba(10, 15, 35, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 255, 128, 0.3);
+    }
+    
+    .input-field {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #334455;
+      transition: all 0.3s;
+    }
+    
+    .input-field:focus {
+      border-color: #00ff80;
+      box-shadow: 0 0 15px rgba(0, 255, 128, 0.4);
+      outline: none;
+    }
+    
+    .btn-generate {
+      background: linear-gradient(90deg, #00cc66, #00ff80);
+      transition: all 0.4s;
+    }
+    
+    .btn-generate:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00ff80;
+    }
+  </style>
+</head>
+<body class="pb-12">
+
+  <div class="max-w-2xl mx-auto px-4 pt-10">
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-5xl font-black neon-green tracking-widest">HACKERS UNION</h1>
+      <p class="text-xl text-cyan-400 mt-2">SENSITIVITY AI <span class="text-green-400">V6</span></p>
+      <div class="h-1 w-24 bg-gradient-to-r from-transparent via-green-400 to-transparent mx-auto mt-4"></div>
+    </div>
+
+    <div class="glass rounded-3xl p-8 shadow-2xl">
+      <div class="space-y-6">
+        <div>
+          <label class="block text-green-400 text-sm mb-2 font-medium">📱 EXACT PHONE MODEL</label>
+          <input type="text" id="brand" 
+                 class="input-field w-full p-5 rounded-2xl text-lg"
+                 placeholder="Ex: Samsung A52, Redmi Note 12, Infinix Hot 12...">
+        </div>
+
+        <div>
+          <label class="block text-green-400 text-sm mb-2 font-medium">💾 RAM (in GB)</label>
+          <input type="number" id="ram" 
+                 class="input-field w-full p-5 rounded-2xl text-lg"
+                 placeholder="Ex: 4, 6, 8, 12">
+        </div>
+
+        <div>
+          <label class="block text-green-400 text-sm mb-2 font-medium">⚡ PERFORMANCE LEVEL</label>
+          <select id="power" 
+                  class="input-field w-full p-5 rounded-2xl text-lg">
+            <option value="medium">Mid-tier / Standard</option>
+            <option value="low">Low-tier / Light</option>
+            <option value="high">High-tier / Full Gaming</option>
+          </select>
+        </div>
+
+        <button onclick="generateSettings()" 
+                class="btn-generate w-full py-7 text-xl font-bold rounded-2xl text-black flex items-center justify-center gap-3">
+          <i class="fas fa-bolt"></i>
+          GENERATE PRO SETTINGS
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="hidden mt-10 glass p-8 rounded-3xl border-l-4 border-green-400">
+        <h3 class="text-2xl font-bold text-green-400 mb-6 text-center" id="device-name"></h3>
+        
+        <div class="space-y-4 text-left" id="settings-content"></div>
+        
+        <p class="text-center text-xs text-green-400/70 mt-8 italic">
+          🔥 Unique AI Algorithm based on your device signature
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center mt-8 text-green-400/50 text-sm">
+      HACKERS UNION • Free Fire Sensitivity Optimizer
+    </div>
+  </div>
+
+  <script>
+    function generateSettings() {
+      let modelInput = document.getElementById('brand').value.trim();
+      let ram = parseInt(document.getElementById('ram').value);
+      let power = document.getElementById('power').value;
+
+      if (!modelInput || isNaN(ram) || ram <= 0) {
+        alert("❌ Please enter a valid phone model and RAM.");
+        return;
+      }
+
+      let modelLower = modelInput.toLowerCase();
+      let signatureScore = 0;
+      let cpuType = "Standard Optimized Processor";
+
+      if (modelLower.includes("a5") || modelLower.includes("a7") || modelLower.includes("pro") || 
+          modelLower.includes("ultra") || modelLower.includes("iphone") || modelLower.includes("redmi note 1")) {
+        signatureScore = 35;
+        cpuType = "High-Performance Chip Detected 🚀";
+      } else if (modelLower.includes("a2") || modelLower.includes("a3") || modelLower.includes("spark")) {
+        signatureScore = 18;
+        cpuType = "Mid-Range Balanced Chip ⚙️";
+      } else {
+        signatureScore = 8;
+        cpuType = "Entry-Level Optimized Chip 🛡️";
+      }
+
+      let baseDpi = Math.round(380 + (ram * 8) + signatureScore);
+      let sensiGenerale = Math.min(92, Math.round(78 + (ram * 2.2) + (signatureScore / 2)));
+      let redDot = Math.round(sensiGenerale + 6);
+      let x2 = Math.round(sensiGenerale - 3);
+      let x4 = Math.round(sensiGenerale - 8);
+      let awm = Math.round(48 - (ram * 0.6) + (signatureScore * 0.4));
+      let buttonSize = Math.round(42 + (ram * 1.8));
+
+      document.getElementById('device-name').textContent = modelInput.toUpperCase();
+      
+      const content = document.getElementById('settings-content');
+      content.innerHTML = `
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">📐 Optimal DPI</span>
+          <span class="font-bold text-green-400">${baseDpi}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🕹️ General Sensitivity</span>
+          <span class="font-bold">${sensiGenerale}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🔴 Red Dot</span>
+          <span class="font-bold">${redDot}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🔍 2x Scope</span>
+          <span class="font-bold">${x2}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🔭 4x Scope</span>
+          <span class="font-bold">${x4}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🎯 AWM Sniper</span>
+          <span class="font-bold">${awm}</span>
+        </div>
+        <div class="flex justify-between py-3 border-b border-green-400/20">
+          <span class="text-gray-300">🔘 Shooting Button Size</span>
+          <span class="font-bold text-yellow-400">${buttonSize}%</span>
+        </div>
+        <div class="pt-4 text-center text-green-400 font-medium">${cpuType}</div>
+      `;
+
+      document.getElementById('result').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
